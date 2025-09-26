@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'monitoring_db',
         'USER': 'monitoring_user',
         'PASSWORD': 'isis2503',
-        'HOST': '35.172.212.142',
+        'HOST': '34.201.100.172',
         'PORT': '5432',
     }
 }
