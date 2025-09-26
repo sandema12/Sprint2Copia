@@ -1,3 +1,4 @@
+# sync_app/management/commands/sync_data.py
 import time
 from django.core.management.base import BaseCommand
 from sync_app.models import Order, Inventory, Payment
@@ -8,8 +9,8 @@ class Command(BaseCommand):
     help = 'Sincroniza datos del WMS con ERP y Store cada 0.5 segundos'
 
     def handle(self, *args, **kwargs):
-        erp_client = ERPClient()
         store_client = StoreClient()
+        erp_client = ERPClient()
 
         while True:
             orders = list(Order.objects.values())
