@@ -1,12 +1,11 @@
+print("Cargando erp_client.py")
+
 class ERPClient:
     def send_orders(self, orders):
-        for order in orders:
-            print(f"ERP: sincronizando orden {order.id}")
+        print("ERPClient: send_orders llamado")
 
     def send_inventory(self, inventory):
-        for item in inventory:
-            print(f"ERP: sincronizando inventario {item.product}")
+        print("ERPClient: send_inventory llamado")
 
     def send_payments(self, payments):
-        for payment in payments:
-            print(f"ERP: sincronizando pago {payment.id}")
+        print("ERPClient: send_payments llamado")
