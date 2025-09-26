@@ -1,10 +1,15 @@
-print("erp_client.py cargado")
-class ERPClient:
-    def send_orders(self, orders):
-        print("ERPClient: send_orders llamado")
+from .base_client import BaseClient
 
-    def send_inventory(self, inventory):
-        print("ERPClient: send_inventory llamado")
+class ERPClient(BaseClient):
+    ORDERS_URL = 'http://localhost:8081/erp/orders'
+    INVENTORY_URL = 'http://localhost:8081/erp/inventory'
+    PAYMENTS_URL = 'http://localhost:8081/erp/payments'
 
-    def send_payments(self, payments):
-        print("ERPClient: send_payments llamado")
+    def update_orders(self, orders):
+        self.post_data(self.ORDERS_URL, orders)
+
+    def update_inventory(self, inventory):
+        self.post_data(self.INVENTORY_URL, inventory)
+
+    def update_payments(self, payments):
+        self.post_data(self.PAYMENTS_URL, payments)
