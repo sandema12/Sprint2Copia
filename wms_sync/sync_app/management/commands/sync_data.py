@@ -1,31 +1,24 @@
-# sync_app/management/commands/sync_data.py
-import time
-from django.core.management.base import BaseCommand
 from sync_app.models import Order, Inventory, Payment
 from sync_app.clients.erp_client import ERPClient
 from sync_app.clients.store_client import StoreClient
 
 class Command(BaseCommand):
-    help = 'Sincroniza datos del WMS con ERP y Store cada 0.5 segundos'
+    help = 'Sincroniza datos WMS con ERP y tienda cada 0.5 segundos'
 
     def handle(self, *args, **kwargs):
-        store_client = StoreClient()
-        erp_client = ERPClient()
+        erp = ERPClient()
+        store = StoreClient()
+        self.stdout.write("Iniciando sincronización...")
 
         while True:
-            orders = list(Order.objects.values())
-            inventory = list(Inventory.objects.values())
-            payments = list(Payment.objects.values())
+            orders = Order.objects.all()
+            inventory = Inventory.objects.all()
+            payments = Payment.objects.all()
 
-            erp_client.update_orders(orders)
-            erp_client.update_inventory(inventory)
-            erp_client.update_payments(payments)
-
-            store_client.update_orders(orders)
-            store_client.update_inventory(inventory)
-            store_client.update_payments(payments)
-
-            print(f'Sincronización realizada: {len(orders)} pedidos, '
-                  f'{len(inventory)} inventario, {len(payments)} pagos')
-
+            erp.send_orders(orders)
+            store.send_orders(orders)
+            erp.send_inventory(inventory)
+            store.send_inventory(inventory)
+            erp.send_payments(payments)
+            store.send_payments(payments)
             time.sleep(0.5)
