@@ -1,6 +1,6 @@
 import time
 
-from click import BaseCommand
+from django.core.management.base import BaseCommand
 from sync_app.models import Order, Inventory, Payment
 from sync_app.clients.erp_client import ERPClient
 from sync_app.clients.store_client import StoreClient
