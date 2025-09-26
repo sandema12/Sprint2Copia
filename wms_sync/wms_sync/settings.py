@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'wms_sync.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'monitoring-db2',
+        'NAME': 'monitoring-db',
         'USER': 'monitoring_user',
         'PASSWORD': 'isis2503',
         'HOST': '35.172.212.142',
