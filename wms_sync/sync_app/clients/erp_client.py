@@ -1,15 +1,17 @@
-from .base_client import BaseClient
+# sync_app/clients/erp_client.py
 
-class ERPClient(BaseClient):
-    ORDERS_URL = 'http://localhost:8081/erp/orders'
-    INVENTORY_URL = 'http://localhost:8081/erp/inventory'
-    PAYMENTS_URL = 'http://localhost:8081/erp/payments'
+class ERPClient:
+    def __init__(self):
+        print("ERPClient initialized")
 
-    def update_orders(self, orders):
-        self.post_data(self.ORDERS_URL, orders)
+    def send_orders(self, orders):
+        print(f"Sending orders to ERP: {orders}")
+        return True
 
-    def update_inventory(self, inventory):
-        self.post_data(self.INVENTORY_URL, inventory)
+    def send_inventory(self, inventory):
+        print(f"Sending inventory to ERP: {inventory}")
+        return True
 
-    def update_payments(self, payments):
-        self.post_data(self.PAYMENTS_URL, payments)
+    def send_payments(self, payments):
+        print(f"Sending payments to ERP: {payments}")
+        return True

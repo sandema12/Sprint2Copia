@@ -1,15 +1,17 @@
-from .base_client import BaseClient
+# sync_app/clients/store_client.py
 
-class StoreClient(BaseClient):
-    ORDERS_URL = 'http://localhost:8082/store/orders'
-    INVENTORY_URL = 'http://localhost:8082/store/inventory'
-    PAYMENTS_URL = 'http://localhost:8082/store/payments'
+class StoreClient:
+    def __init__(self):
+        print("StoreClient initialized")
 
-    def update_orders(self, orders):
-        self.post_data(self.ORDERS_URL, orders)
+    def send_orders(self, orders):
+        print(f"Sending orders to Store: {orders}")
+        return True
 
-    def update_inventory(self, inventory):
-        self.post_data(self.INVENTORY_URL, inventory)
+    def send_inventory(self, inventory):
+        print(f"Sending inventory to Store: {inventory}")
+        return True
 
-    def update_payments(self, payments):
-        self.post_data(self.PAYMENTS_URL, payments)
+    def send_payments(self, payments):
+        print(f"Sending payments to Store: {payments}")
+        return True
