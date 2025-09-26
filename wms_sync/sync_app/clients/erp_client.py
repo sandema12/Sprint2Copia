@@ -1,5 +1,4 @@
-print("Cargando erp_client.py")
-
+print("erp_client.py cargado")
 class ERPClient:
     def send_orders(self, orders):
         print("ERPClient: send_orders llamado")
